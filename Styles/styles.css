@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Mono", serif;
+    font-optical-sizing: auto;
+    background-color: azure;
+    
+}
+a {
+    text-decoration: none !important;
+    color: black;
+    font-size: 18px;
+}
+
+
+/* ----------------------------------------------- */
+
+header{
+    position: relative;
+    height: 100vh;
+}
+.nav{
+    text-align: center;
+    height: 100px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-bottom: 1.5px solid;
+}
+.nav a{
+    width: 175px;
+    padding: 18px;
+    text-align: center;
+    margin: 0 3px;
+
+}
+
+.nav a:hover    {
+    background-color: aquamarine
+}
+
+a.active{
+    background-color: teal;
+   
+}
+
+
+/* --------------------------------- */
+.section{
+    display: flex;
+    justify-content: center;
+    height: 75%;
+    align-items: center;
+}
+.left {
+    width: 50%;
+}
+.section img {
+    border-radius: 50px 0px 50px 50px;
+    height: 300px;
+    width: 300px;
+}
+.section a{
+    padding: 15px;
+    background-color: teal;
+    border-radius: 40px;
+}
+.section a:hover{
+    background-color: aquamarine;
+}
+
+.section h3{
+    margin-bottom: 2em;
+}
