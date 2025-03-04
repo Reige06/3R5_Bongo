@@ -1,31 +1,4 @@
-.main_nav{
-    text-align: center;
-    height: 100px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    border: none;
-    border-bottom: 1.5px solid;
-}
-.main_nav a{
-    width: 175px;
-    padding: 18px;
-    text-align: center;
-    margin: 0 3px;
-    text-decoration: none;
-    font-family: "Roboto Mono", serif;
-    color: black;
 
-}
-
-.main_nav a:hover    {
-    background-color: aquamarine
-}
-
-a.active{
-    background-color: teal;
-   
-}
 /* ----------------------------------- */
 .nav{
     align-items: center;
@@ -51,8 +24,12 @@ a.active{
 
 
 /* ---------------------- */
-.img{
-    padding: 20px 0 0 40px;
+.img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
 }
 
 .page-contents{
