@@ -44,25 +44,25 @@
             <p class="card-header">Portfolio</p>
             <p class="card-body">Share your previous IT projects</p>
         </div>
-        <h2>Student List</h2>
-        <ul id="student-list" class="card-body"></ul>
+        <h2>Courses</h2>
+        <ul id="course-list" class="card-body"></ul>
     </div>
 
 
     <script>
-        const jsonURL = "https://reige06.github.io/3R5_Bongo/Jason/students.json"
+        const jsonURL = "https://reige06.github.io/3R5_Bongo/Jason/courses.json"
 
         fetch(jsonURL)
         .then(response => response.json())
         .then(data => {
-            let studentList = document.getElementById("student-list");
+            let coursetList = document.getElementById("course-list");
 
 
-            if (data.students && Array.isArray(data.students)){
-                data.students.forEach(student => {
+            if (data.courses && Array.isArray(data.courses)){
+                data.courses.forEach(course => {
                     let listItem = document.createElement("li");
-                    listItem.textContent = `${student.name} - ${student.age} (Course: ${student.course})`;
-                    studentList.appendChild(listItem);
+                    listItem.textContent = `(Year level: ${course.year_level}) (Semester: ${course.sem}) (Code: ${course.code}) (Description: ${course.description}) (Credit: ${course.credit})`;
+                    courseList.appendChild(listItem);
                 });
             } else{
                 console.error("Expected 'students' array but got: ", data);
