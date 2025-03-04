@@ -55,7 +55,7 @@
         fetch(jsonURL)
         .then(response => response.json())
         .then(data => {
-            let coursetList = document.getElementById("course-list");
+            let courseList = document.getElementById("course-list");
 
 
             if (data.courses && Array.isArray(data.courses)){
