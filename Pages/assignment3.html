@@ -17,7 +17,6 @@
             <a href="./assignment1.html">Assignment 1</a>
             <a href="./assignment2.html">Assignment 2</a>
             <a href="./assignment3.html" class="active">Assignment 3</a>
-            <a href="./assignment4.html">Assignment 4</a>
         </div>
     </header>
     <ul class="nav">
@@ -27,6 +26,10 @@
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="img">
+        <img src="../Assets/profile1.png" alt="image">
+        <p>I am an Image and I'm all by myself</p>
+    </div>
     <div class="page-contents">
         <div class="card" id="about">
             <p class="card-header">About</p>
@@ -43,32 +46,49 @@
         <div class="card" id="portfolio">
             <p class="card-header">Portfolio</p>
             <p class="card-body">Share your previous IT projects</p>
+            <h2 class="card-header">Courses</h2>
+            <input type="text" id="search-bar" placeholder="Search by subject description..." onkeyup="filterCourses()">
+            <ul id="course-list" class="card-body"></ul>
         </div>
-        <h2>Courses</h2>
-        <ul id="course-list" class="card-body"></ul>
     </div>
 
 
     <script>
         const jsonURL = "https://reige06.github.io/3R5_Bongo/Jason/courses.json"
+        let coursesData = [];
 
         fetch(jsonURL)
         .then(response => response.json())
         .then(data => {
-            let courseList = document.getElementById("course-list");
-
-
             if (data.courses && Array.isArray(data.courses)){
-                data.courses.forEach(course => {
-                    let listItem = document.createElement("li");
-                    listItem.textContent = `(Year level: ${course.year_level}) (Semester: ${course.sem}) (Code: ${course.code}) (Description: ${course.description}) (Credit: ${course.credit})`;
-                    courseList.appendChild(listItem);
-                });
+                coursesData = data.courses;
+                displayCourses(coursesData);
             } else{
                 console.error("Expected 'students' array but got: ", data);
             }
         })
         .catch(error => console.error("Error fetching JSON:", error))
+
+        function displayCourses(filteredCourses){
+            let courseList = document.getElementById("course-list");
+            courseList.innerHTML = "";
+
+            filteredCourses.forEach(course =>{
+                let listItem = document.createElement("li");
+                listItem.textContent = `Year level: ${course.year_level} | Semester: ${course.sem} | Code: ${course.code} | Description: ${course.description} | Credit: ${course.credit}`;
+                courseList.appendChild(listItem);
+            });
+        }
+        function filterCourses() {
+            let query = document.getElementById("search-bar").value.toLowerCase();
+            if (query === ""){
+                displayCourses(coursesData);
+            }else{
+                let filteredCourses = coursesData.filter(course =>
+                course.description.toLowerCase().includes(query)
+            );
+            displayCourses(filteredCourses);
+        }}
     </script>
 </body>
 </html>
