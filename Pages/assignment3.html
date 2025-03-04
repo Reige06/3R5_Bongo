@@ -59,7 +59,7 @@
 
 
             if (data.students && Array.isArray(data.students)){
-                data.students.array.forEach(student => {
+                data.students.forEach(student => {
                     let listItem = document.createElement("li");
                     listItem.textContent = `${student.name} - ${student.age} (Course: ${student.course})`;
                     studentList.appendChild(listItem);
