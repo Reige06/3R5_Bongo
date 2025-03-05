@@ -47,7 +47,7 @@
             <p class="card-header">Portfolio</p>
             <p class="card-body">Share your previous IT projects</p>
             <h2 class="card-header">Courses</h2>
-            <input type="text" id="search-bar" placeholder="Search by subject description..." onkeyup="filterCourses()">
+            <input type="text" id="search-bar" placeholder="Search by subject description..." onkeyup="filter_courses()">
             <ul id="course-list" class="card-body"></ul>
         </div>
     </div>
@@ -55,39 +55,39 @@
 
     <script>
         const jsonURL = "https://reige06.github.io/3R5_Bongo/Jason/courses.json"
-        let coursesData = [];
+        let courses_data = [];
 
         fetch(jsonURL)
         .then(response => response.json())
         .then(data => {
             if (data.courses && Array.isArray(data.courses)){
-                coursesData = data.courses;
-                displayCourses(coursesData);
+                courses_data = data.courses;
+                display_courses(courses_data);
             } else{
                 console.error("Expected 'students' array but got: ", data);
             }
         })
         .catch(error => console.error("Error fetching JSON:", error))
 
-        function displayCourses(filteredCourses){
-            let courseList = document.getElementById("course-list");
-            courseList.innerHTML = "";
+        function display_courses(courses_filtered){
+            let course_list = document.getElementById("course-list");
+            course_list.innerHTML = "";
 
-            filteredCourses.forEach(course =>{
+            courses_filtered.forEach(course =>{
                 let listItem = document.createElement("li");
                 listItem.textContent = `Year level: ${course.year_level} | Semester: ${course.sem} | Code: ${course.code} | Description: ${course.description} | Credit: ${course.credit}`;
-                courseList.appendChild(listItem);
+                course_list.appendChild(listItem);
             });
         }
-        function filterCourses() {
+        function filter_courses() {
             let query = document.getElementById("search-bar").value.toLowerCase();
             if (query === ""){
-                displayCourses(coursesData);
+                display_courses(courses_data);
             }else{
-                let filteredCourses = coursesData.filter(course =>
+                let courses_filtered = courses_data.filter(course =>
                 course.description.toLowerCase().includes(query)
             );
-            displayCourses(filteredCourses);
+            display_courses(courses_filtered);
         }}
     </script>
 </body>
